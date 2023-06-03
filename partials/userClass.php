@@ -233,7 +233,12 @@ class User
                 }
             }
             // make the new user role 2, mean it will be a user
-            $role = 2;
+            if ($idForNewUser==0){
+                $role = 0;
+                $idForNewUser++;
+            }
+            else 
+                $role = 2;
             // time signed up
             $createdAt = date("y/m/d h:i:s", time() + (60 * 60));
 
@@ -469,27 +474,7 @@ class User
     */
     public function compareRolesForUpdateDataANDChangePassword($idLoggedIn, $roleLoggedIn, $idInGet, $roleInGet)
     {
-        // ignore testing code
-        // if ($roleLoggedIn < $roleInGet) {
-        //     if ($roleInGet == 0)
-        //         return "cannot";
-        //     else
-        //         return "can";
-        // } else if ($roleLoggedIn > $roleInGet) {
-        //     return "cannot";
-        // } else if ($roleLoggedIn == $roleInGet) {
-        //     if ($roleInGet == 0)
-        //         return "can";
-        //     else if ($roleInGet == 1)
-        //         return "can";
-        //     else if ($roleInGet == 2 && $idInGet == $idLoggedIn)
-        //         return "can";
-        //     else
-        //         return "cannot";
-        // } else {
-        //     return "cannot";
-        // }
-
+       
         // if logged in is an administrator then he can update and change password to any user or admin
         if ($roleLoggedIn == 0) {
             return "can";
