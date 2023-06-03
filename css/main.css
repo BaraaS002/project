@@ -4,11 +4,12 @@
 }
 
 :root {
-    --mini-black: #247b7b;
-    --beuty-white: #242424;
-    --beuty-blue: #50acac;
-    --body-bc: #c1c4c7;
+    --mini-black: #0584BA;
+    --beuty-white: #1e5286;
+    --beuty-blue: #aac0d2;
+    --body-bc: #6c757d;
 }
+
 
 * {
     padding: 0;
