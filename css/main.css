@@ -4,10 +4,10 @@
 }
 
 :root {
-    --mini-black: #0584BA;
-    --beuty-white: #1e5286;
-    --beuty-blue: #aac0d2;
-    --body-bc: #6c757d;
+    --mini-black: #0584ba;
+    --beuty-white: #242424;
+    --beuty-blue: #3db1e7;
+    --body-bc:#eeefff;
 }
 
 
@@ -615,7 +615,7 @@ textarea:focus {
     font-weight: 400;
     font-size: 1.5em;
     transition: 0.2s;
-    color: #aaa;
+    color: var(--body-bc);
     background-color: var(--beuty-blue);
 }
 
