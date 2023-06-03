@@ -10,7 +10,7 @@
                 style="--bc-color:#337ab7;" class="fa-brands fa-instagram hc"></i></a>
         <a target="_blank" href="mailto:baraa.sahmoud02@gmail.com"><i style="--bc-color:#333;"
                 class="fa-regular fa-envelope"></i></a>
-        <a target="_blank" href="https://github.com/Baraa02"><i style="--bc-color:#f90;"
+        <a target="_blank" href="https://github.com/BaraaS002"><i style="--bc-color:#f90;"
                 class="fa-brands fa-github"></i></a>
     </div>
 </div>
