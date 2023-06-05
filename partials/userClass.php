@@ -1,10 +1,10 @@
 <?php
 
-class User
+class User  // class user to use it in sign up and log in and update profile and delete account and log out and change password and change image and change name and change email and change password        
 {
-    private $conn;
+    private $conn; // connection to db in object created in constructor to use it in all methods in class
 
-    public function __construct()
+    public function __construct()// constructor to connect to db in object created
     {
         // connect to db in object created
         define("servername", 'localhost');
@@ -95,12 +95,13 @@ class User
         } else {
             // hash password to compare hashed password in db with it
             $pwMD5 = md5($pw);
-            $stmt = $this->conn->prepare("select password from users where id=?");
-            $stmt->bind_param("i", $id);
-            $stmt->execute();
-            $res = $stmt->get_result();
-            $row = mysqli_fetch_assoc($res);
-            if ($row['password'] != $pwMD5) {
+            $stmt = $this->conn->prepare("select password from users where id=?");// prepare stmt to protect from sql injection 
+            $stmt->bind_param("i", $id);// bind parameters to stmt to protect from sql injection
+            $stmt->execute();// execute stmt
+            $res = $stmt->get_result();// get result from stmt
+            $row = mysqli_fetch_assoc($res);// fetch a result row as an associative array
+            
+            if ($row['password'] != $pwMD5) {// if password in db not equal password in input
                 return 'Password must equal Current Password.';
             } else {
                 return "AllGood";
@@ -184,7 +185,7 @@ class User
     public function register($un, $em, $pw, $cp, $image, $image_name)
     {
         $errors = [];
-        $idForNewUser = 0;
+        $idForNewUser = 0;//why 0? because id in db start from 1 and if there an error in email will return 0
 
         // validate inputs
 
@@ -228,7 +229,7 @@ class User
             // check if the image is the default image
             if (!strstr($image_name, "avatar")) {
                 // move image from tmp to image folder in project
-                if (!move_uploaded_file($_FILES['image']['tmp_name'], getcwd() . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . pathinfo($_FILES['image']['name'], PATHINFO_FILENAME) . "_" . $un . "." . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION))) {
+                if (!move_uploaded_file($_FILES['image']['tmp_name'], getcwd() . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . pathinfo($_FILES['image']['name'], PATHINFO_FILENAME) . "_" . $un . "." . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION))) {// if there an error in moving image to image folder in project
                     echo 'Error while uploading the Image.';
                 }
             }
