@@ -75,27 +75,27 @@ include "partials/header.php";
     <h3>You searched for '<?= $searchFor ?>' </h3>
     <div class="searchCon">
         <form action="" method="post" class="hidden">
-            <input id="name" name="name" type="text" placeholder="Searching for User ... "/>
+            <input id="name" name="name" type="text" placeholder="Searching for User ... " />
             <input type="submit" value="Search" name="submit" class="btnSearch">
         </form>
     </div>
     <div class="table" style="overflow-x: auto;">
         <table class="">
             <thead>
-            <tr>
-                <td>#</td>
-                <td>Profile Image</td>
-                <td>Name</td>
-                <td>Show</td>
-                <td>Update Data</td>
-                <td>Update Password</td>
-                <td>Delete</td>
-            </tr>
+                <tr>
+                    <td>#</td>
+                    <td>Profile Image</td>
+                    <td>Name</td>
+                    <td>Show</td>
+                    <td>Update Data</td>
+                    <td>Update Password</td>
+                    <td>Delete</td>
+                </tr>
             </thead>
             <tbody>
-            <?php
-            $users = $objUser->getAllUsers();
-            for ($i = 0; $i < count($users); $i++) {
+                <?php
+            $users = $objUser->getAllUsers();// get all users from database and store them in $users
+            for ($i = 0; $i < count($users); $i++) {// loop on $users array to display all users
                 $trId = $users[$i]['id'];
                 $trName = $users[$i]['name'];
                 // if the searched for world is in (or part of) the name of username then display this user
@@ -138,23 +138,22 @@ include "partials/header.php";
 </div>
 <?php include "partials/footer.php"; ?>
 <script>
-
-    let searchCon = document.querySelector(".searchCon form");
-    let search = document.querySelectorAll(".container .search");
-    search.forEach((e) => {
-        e.addEventListener("click", () => {
-            if (e.classList.contains("fa-x")) {
-                searchCon.classList.add("hidden");
-                document.querySelector(".container .search.fa-x").style.display = "none";
-                document.querySelector(".container .search.fa-magnifying-glass").style.display = "block";
-            } else if (e.classList.contains("fa-magnifying-glass")) {
-                searchCon.classList.remove("hidden");
-                document.querySelector("#name").focus();
-                document.querySelector(".container .search.fa-x").style.display = "block";
-                document.querySelector(".container .search.fa-magnifying-glass").style.display = "none";
-            }
-        });
+let searchCon = document.querySelector(".searchCon form");
+let search = document.querySelectorAll(".container .search");
+search.forEach((e) => {
+    e.addEventListener("click", () => {
+        if (e.classList.contains("fa-x")) {
+            searchCon.classList.add("hidden");
+            document.querySelector(".container .search.fa-x").style.display = "none";
+            document.querySelector(".container .search.fa-magnifying-glass").style.display = "block";
+        } else if (e.classList.contains("fa-magnifying-glass")) {
+            searchCon.classList.remove("hidden");
+            document.querySelector("#name").focus();
+            document.querySelector(".container .search.fa-x").style.display = "block";
+            document.querySelector(".container .search.fa-magnifying-glass").style.display = "none";
+        }
     });
+});
 </script>
 </body>
 

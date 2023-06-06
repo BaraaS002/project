@@ -43,7 +43,7 @@ include "partials/header.php";
         <div class="input">
             <label for="email">Enter Email Address :</label>
             <input id="email" name="email" type="text" placeholder="Email Address"
-                   value="<?php /* if there value in post print it */ if (isset($_POST["submit"])) echo htmlspecialchars(trim($_POST["email"])) ?>"/>
+                value="<?php /* if there value in post print it */ if (isset($_POST["submit"])) echo htmlspecialchars(trim($_POST["email"])) ?>" />
             <span class="error <?php if (isset($errors["email"])) echo "show" ?>">X
                 <?php if (isset($errors["email"])) echo $errors["email"] ?> X</span>
         </div>
@@ -51,7 +51,7 @@ include "partials/header.php";
             <label for="password">Enter Password :</label>
             <div class="passInput">
                 <input id="password" name="password" type="password" placeholder="Password"
-                       value="<?php /* if there value in post print it */ if (isset($_POST["submit"])) echo htmlspecialchars(trim($_POST["password"])) ?>"/>
+                    value="<?php /* if there value in post print it */ if (isset($_POST["submit"])) echo htmlspecialchars(trim($_POST["password"])) ?>" />
                 <i class="passwordToggleBTN fa-solid fa-eye-slash"></i>
             </div>
             <span class="error <?php if (isset($errors["password"])) echo "show" ?>">X
@@ -76,33 +76,33 @@ include "partials/header.php";
 </div>
 <?php include "partials/footer.php"; ?>
 <script>
-    window.onload = () => {
-        // focus in first input
-        let firstInput = document.querySelector(".container .input #email");
-        if (firstInput.value !== '')
-            firstInput.value = firstInput.value + " ";
-        firstInput.focus();
-        firstInput.value = firstInput.value.trim();
+window.onload = () => {
+    // focus in first input
+    let firstInput = document.querySelector(".container .input #email");
+    if (firstInput.value !== '')
+        firstInput.value = firstInput.value + " ";
+    firstInput.focus();
+    firstInput.value = firstInput.value.trim();
+}
+// links goes to registers page
+document.querySelectorAll(".link").forEach((e) => {
+    e.addEventListener("click", () => {
+        window.close();
+        window.open("register.php", "_blank")
+    });
+});
+// button that show password
+let passwordInput = document.querySelector("#password");
+let passwordToggleBTN = document.querySelector(".passwordToggleBTN");
+passwordToggleBTN.addEventListener("click", () => {
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        passwordToggleBTN.classList.replace("fa-eye-slash", "fa-eye");
+    } else {
+        passwordInput.type = "password";
+        passwordToggleBTN.classList.replace("fa-eye", "fa-eye-slash");
     }
-    // links goes to registers page
-    document.querySelectorAll(".link").forEach((e) => {
-        e.addEventListener("click", () => {
-            window.close();
-            window.open("register.php", "_blank")
-        });
-    });
-    // button that show password
-    let passwordInput = document.querySelector("#password");
-    let passwordToggleBTN = document.querySelector(".passwordToggleBTN");
-    passwordToggleBTN.addEventListener("click", () => {
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-            passwordToggleBTN.classList.replace("fa-eye-slash", "fa-eye");
-        } else {
-            passwordInput.type = "password";
-            passwordToggleBTN.classList.replace("fa-eye", "fa-eye-slash");
-        }
-    });
+});
 </script>
 </body>
 

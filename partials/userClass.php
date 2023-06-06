@@ -1,12 +1,12 @@
 <?php
 
-class User  // class user to use it in sign up and log in and update profile and delete account and log out and change password and change image and change name and change email and change password        
+class User       
 {
-    private $conn; // connection to db in object created in constructor to use it in all methods in class
-
-    public function __construct()// constructor to connect to db in object created
+    private $conn; 
+// constructor to connect to db in object created
+    public function __construct()
     {
-        // connect to db in object created
+       
         define("servername", 'localhost');
         define("username", 'root');
         define("password", '');
@@ -124,7 +124,7 @@ class User  // class user to use it in sign up and log in and update profile and
     }
 
     // validate image that pass as parameter
-    private function checkImage($image)
+    private function checkImage($image) 
     {
         if (!$image['image']['name'] == "") {
             if ($image['image']['size'] > (1024 * 1024) / 2) {
@@ -138,14 +138,14 @@ class User  // class user to use it in sign up and log in and update profile and
     // log in method
     public function logIn($em, $pw)
     {
-        $errors = [];
+        $errors = []; 
 
         // validate inputs
 
-        // validate email
+        // validate email 
         $emailError = $this->checkEmail($em);
         if ($emailError !== "AllGood")
-            $errors["email"] = $emailError;
+            $errors["email"] = $emailError; 
 
         // validate password
         $passwordError = $this->checkOldPassword($pw);
@@ -185,9 +185,9 @@ class User  // class user to use it in sign up and log in and update profile and
     public function register($un, $em, $pw, $cp, $image, $image_name)
     {
         $errors = [];
-        $idForNewUser = 0;//why 0? because id in db start from 1 and if there an error in email will return 0
+        $idForNewUser = 0;
 
-        // validate inputs
+        // validate inputs //
 
         // validate user name
         $nameError = $this->checkName($un);
@@ -223,7 +223,7 @@ class User  // class user to use it in sign up and log in and update profile and
             if ($imageError !== "AllGood")
                 $errors["image"] = $imageError;
         }
-
+        // if no errors will insert the new user in db
         if (count($errors) == 0) {
             $pwForDB = md5($pw);
             // check if the image is the default image
@@ -355,21 +355,7 @@ class User  // class user to use it in sign up and log in and update profile and
             return $errors;
         }
     }
-// ignore testing code
-//    public function deletingUser($id, $roleForIdInGet, $loggedInUserId, $roleForIdLoggedIn)
-//    {
-//        if ($roleForIdInGet == 0) {
-//            header("location:manageUser.php");
-//        } else if ($roleForIdInGet == 1) {
-//            if ($roleForIdLoggedIn != 2) {
-//                $this->executeDeleting($id, $loggedInUserId);
-//            }
-//        } else if ($roleForIdInGet == 2) {
-//            if ($roleForIdLoggedIn != 2 || $id == $loggedInUserId) {
-//                $this->executeDeleting($id, $loggedInUserId);
-//            }
-//        }
-//    }
+
 
     // execute delete method (deleting method)
     public function executeDeleting($id, $loggedInUserId)
@@ -488,7 +474,7 @@ class User  // class user to use it in sign up and log in and update profile and
         } // if logged in is a user then he can update and change password to his account
         else if ($roleLoggedIn == 2) {
             // must id that come to validate equal logged in
-            if ($idLoggedIn == $idInGet)
+            if ($idLoggedIn == $idInGet)// if equal then he can update and change password to his account
                 return 'can';
             else
                 return 'cannot';
