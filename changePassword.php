@@ -41,7 +41,7 @@ $doActionForChangePassword = $objUser->compareRolesForUpdateDataANDChangePasswor
 if ($doActionForChangePassword == "cannot") {
     header("location:manageUser.php");
 }
-
+// Do change password//
 if (isset($_POST["submit"])) {
     $oldPw = htmlspecialchars(trim($_POST["oldPw"]));
     $newPw = htmlspecialchars(trim($_POST["newPw"]));

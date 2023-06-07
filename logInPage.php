@@ -9,8 +9,8 @@ if (isset($_SESSION['userID'])) {
 if (isset($_GET['id'])) {
     header("location:logInPage.php");
 }
-$errors = [];
-$noMatch = "";
+$errors = [];// for errors in inputs in log in form
+$noMatch = "";// for no match in log in form
 
 // check if user press submit button in form or not
 if (isset($_POST["submit"])) {
@@ -31,6 +31,7 @@ if (isset($_POST["submit"])) {
     }
 }
 
+// for Register button in header in html
 $thirdChildOfHeader = '<div class="reg">
             <a href="" class="link">Register</a>
         </div>';
